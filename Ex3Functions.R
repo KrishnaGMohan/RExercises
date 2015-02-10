@@ -86,3 +86,37 @@ m <- seq(0,430,by=10)
 matrix(c(m,quadrant(m)),ncol=2,byrow=F)
 
 
+day = 27
+month = 2
+year = 1997
+
+k <- day
+k
+y <- year %% 100
+y
+c <- year %/% 100
+c
+m <- ((month - 3) %% 12) + 1
+m
+
+floor(2.6 * m - 0.2)
+
+dow <- as.integer(( floor(2.6 * m - 0.26) + k + y + (y%/%4) + (c%/%4) - 2*c)%%7)
+
+
+
+weekday <- function(day, month, year)
+{
+  k <- day
+  y <- year %% 100
+  c <- year %/% 100
+  m <- ((month - 3) %% 12) + 1
+  
+  dow <- as.integer(( floor(2.6 * m - 0.26) + k + y + (y%/%4) + (c%/%4) - 2*c)%%7)
+  c("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")[dow +1]
+}
+
+weekday(10,2,2015)
+weekday(10,7,1969)
+
+weekday( c(27,18,21), c(2,2,1), c(1997,1940,1963) )
