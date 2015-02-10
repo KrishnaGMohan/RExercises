@@ -76,3 +76,13 @@ tmpFn <- function(n,k)
 }  
 tmpFn(5,2)
 tmpFn(6,7)
+
+quadrant <- function(alpha)
+{
+  as.integer(( alpha %% 360) / 90) +1
+}
+
+m <- seq(0,430,by=10)
+matrix(c(m,quadrant(m)),ncol=2,byrow=F)
+
+
