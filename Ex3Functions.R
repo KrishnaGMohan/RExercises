@@ -22,6 +22,7 @@ tmpFn <- function(x)
   (x[1:n] + x[2:(n+1)] + x[3:(n+2)])/3
 }
 
+
 tmpFn(c(1:5,6:1))
 
 
@@ -120,3 +121,81 @@ weekday(10,2,2015)
 weekday(10,7,1969)
 
 weekday( c(27,18,21), c(2,2,1), c(1997,1940,1963) )
+
+
+
+
+
+
+
+testLoop <- function(n)
+{
+  if (n < 4) stop("The argument n must be an integer which is at least 4.\n")
+  x <- rep(NA, n-1)
+  x[1] <- 1
+  x[2] <- 2
+  
+  for (j in (3:(n-1)))
+  {
+    x[j] <- x[j-1] + 2/x[j-1]
+  }  
+  x
+}
+
+testLoop(8)
+
+
+
+
+testLoop2 <- function(yVec)
+{
+    sum(exp(seq(along=yVec)))
+}
+
+yVec <- vector(mode="numeric", length=0)
+#yVec <- c(4,1,7,2)
+seq(along=yVec)
+length(yVec)
+testLoop2(yVec)
+
+
+
+
+
+quadmap <- function( start, rho, niter)
+{
+  x <- rep(NA, niter)
+  x[1] <- start
+  for (k in 2:niter)
+  {
+    x[k] <- rho * x[k - 1] * (1 - x[k - 1])
+  }
+  x
+}
+
+tmp <- quadmap(start=0.95, rho=2, niter=500)
+plot(tmp, type = "l")
+
+tmp <- quadmap(start=0.95, rho=2.99, niter=500)
+plot(tmp, type = "l")
+plot(tmp[300:500], type = "l")
+
+
+
+quadmap2 <- function( start, rho)
+{
+  niter <- 1
+  x <- c(start, rho * start * (1 - start))
+  
+  while ( abs(x[2] - x[1]) >= 0.02 )
+  {
+    x[1] <- x[2]
+    x[2] = rho * x[1] * (1 - x[1])
+    niter <- niter + 1
+  }
+  niter
+}
+
+quadmap2(start = 0.95, rho = 2.99)
+
+tmp
