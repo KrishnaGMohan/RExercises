@@ -199,3 +199,41 @@ quadmap2 <- function( start, rho)
 quadmap2(start = 0.95, rho = 2.99)
 
 tmp
+
+
+
+
+
+x <- seq(2,56,by=3)
+
+tmpFn <- function(xVec)
+{
+  r <- rep(NA, 2)
+
+  r[1] <- sum((xVec[2:length(xVec)] - mean(xVec)) * (xVec[1:(length(xVec)-1)] - mean(xVec)))/sum((xVec - mean(xVec)) ^ 2)  
+  r[2] <- sum((xVec[3:length(xVec)] - mean(xVec)) * (xVec[1:(length(xVec)-2)] - mean(xVec)))/sum((xVec - mean(xVec)) ^ 2)   
+  r
+}
+
+tmpFn(xVec)
+
+
+
+tmpAcf <- function(xVec)
+{
+  xc <- xVec - mean(xVec)
+  denom <- sum(xc^2)
+  n <- length(x)
+  r1 <- sum( xc[2:n] * xc[1:(n-1)] )/denom
+  r2 <- sum( xc[3:n] * xc[1:(n-2)] )/denom
+  list(r1 = r1, r2 = r2)
+}
+
+tmpAcf <- function(x, k)
+{
+  xc <- x - mean(x)
+  denom <- sum(xc^2)
+  n <- length(x)
+  tmpFn <- function(j){ sum( xc[(j+1):n] * xc[1:(n-j)] )/denom }
+  c(1, sapply(1:k, tmpFn))
+}
