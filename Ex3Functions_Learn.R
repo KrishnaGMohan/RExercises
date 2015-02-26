@@ -104,6 +104,7 @@ mat <- matrix(c(1,1,3, 5,2,6, -2,-1,-3), nrow = 3, ncol = 3, byrow = T)
 
 mat
 tmpFn(mat)
+<<<<<<< HEAD
 
 
 
@@ -112,3 +113,5 @@ rm(list=ls())
 
 
 getwd()
+=======
+>>>>>>> f92211384f7d18a9b4a8cb107ba7da38813d6319
