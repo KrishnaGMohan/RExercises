@@ -144,9 +144,25 @@ tmpFn <- function(n,k)
 
 tmpFn(5,3)
 
+#---------------------------------------------------------------------
+# 
+# 6. Suppose an angle alpla is given as a positive real number of degrees.
+# If 0 <= alpha < 90 then it is quadrant 1. 
+# If 90 <= apha < 180 then it is quadrant 2.
+# If 180 <= alpha < 270 then it is quadrant 3. 
+# If 270 <= alpha < 360 then it is quadrant 4.
+# If 360 <= alpha < 450 then it is quadrant 1. And so on.
+# Write a function quadrant(alpha) which returns the quadrant of the angle alpha.
+# 
 
+quadrant <- function(alpha)
+{
+    1 + (alpha %% 360) %/% 90 
+}
 
-
+quadrant(900)
 
 #-----------------------------------
+
+
 rm(list=ls())
