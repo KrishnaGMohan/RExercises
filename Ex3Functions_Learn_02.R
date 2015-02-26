@@ -1,5 +1,19 @@
 rm(list=ls())
+#-----------------------------
+# Learning
 
+(m2 <- matrix(1:20, 4, 5))
+lower.tri(m2)
+m2[lower.tri(m2)] <- NA
+m2
+
+
+
+
+#-----------------------------
+rm(list=ls())
+
+#-----------------------------
 # 1. 
 # (a) Write functions tmpFn1 and tmpFn2 such that if xVec is the vector (x1, 
 # x2,..., xn), then tmpFn1(xVec) returns the vector ( x1, x2^2,  ..., xn^n 
@@ -104,6 +118,34 @@ mat <- matrix(c(1,1,3, 5,2,6, -2,-1,-3), nrow = 3, ncol = 3, byrow = T)
 
 mat
 tmpFn(mat)
+
+#----------------------------------------------------------------
+
+# 5. Write a function which takes 2 arguments n and k which are positive integers. It should return the n * n
+# matrix: 
+# [
+# k 1 0 0 . . . 0 0
+# 1 k 1 0 . . . 0 0
+# 0 1 k 1 . . . 0 0
+# 0 0 1 k . . . 0 0
+# . . . . . . . . .
+# 0 0 0 0 . . . k 1
+# 0 0 0 0 . . . 1 k
+# ]
+# Hint: First try to do it for a specific case such as n = 5 and k = 2 on the Command Line.
+
+
+tmpFn <- function(n,k)
+{
+  mat <- diag(n) * k
+  mat[ abs(row(mat) - col(mat)) == 1] <-1
+  mat
+}
+
+tmpFn(5,3)
+
+
+
 
 
 #-----------------------------------
